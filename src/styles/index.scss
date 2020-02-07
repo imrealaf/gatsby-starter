@@ -1,0 +1,12 @@
+// custom variables and variable overwrites
+@import 'theme/variables';
+
+// default variables and available mixins
+@import '~uikit/src/scss/variables-theme';
+@import '~uikit/src/scss/mixins-theme';
+
+// custom mixin overwrites
+@import 'theme/mixins';
+
+// UIkit
+@import '~uikit/src/scss/uikit-theme';
