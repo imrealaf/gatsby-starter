@@ -5,6 +5,11 @@ module.exports = {
     author: `@whoisaf`
   },
   plugins: [
+    `gatsby-plugin-top-layout`,
+    {
+      resolve: 'gatsby-plugin-material-ui',
+      options: {}
+    },
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,

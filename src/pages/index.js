@@ -4,6 +4,7 @@ import { Link } from 'gatsby';
 import Layout from '../components/layout';
 import Image from '../components/image';
 import SEO from '../components/seo';
+import PillButton from '../components/ui/PillButton';
 
 const IndexPage = () => (
   <Layout>
@@ -12,6 +13,7 @@ const IndexPage = () => (
       className="uk-position-relative uk-visible-toggle uk-light"
       tabIndex="-1"
       data-uk-slideshow
+      style={{ opacity: 0 }}
     >
       <ul
         className="uk-slideshow-items"
@@ -53,7 +55,9 @@ const IndexPage = () => (
         data-uk-slideshow-item="next"
       ></a>
     </div>
-    <br />
+    <PillButton variant="contained" color="primary">
+      Primary
+    </PillButton>
     <br />
     <br />
     <br />
