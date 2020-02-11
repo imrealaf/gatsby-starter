@@ -7,39 +7,93 @@ import Helmet from 'react-helmet';
 
 import 'uikit';
 import '../styles/index.scss';
+
 import { ScrollToTop } from './hoc';
 import Header from './header';
 
-const Layout = ({ hasFullHeight, children }) => {
-  const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
-        }
+//
+//  Prop types
+//
+const propTypes = {
+  /**
+   *  hasFullHeight
+   *  @type boolean
+   */
+  hasFullHeight: PropTypes.bool,
+
+  /**
+   *  children
+   *  @type node
+   */
+  children: PropTypes.node.isRequired
+};
+
+//
+//  Default props
+//
+const defaultProps = {
+  hasFullHeight: false
+};
+
+//
+//  Query
+//
+const query = graphql`
+  query SiteTitleQuery {
+    site {
+      siteMetadata {
+        title
       }
     }
-  `);
+  }
+`;
 
+const Layout = ({ hasFullHeight, children }) => {
+  /**
+   *  Get data
+   */
+  const data = useStaticQuery(query);
   const { title } = data.site.siteMetadata;
 
+  /**
+   *  Render
+   */
   return (
     <Fragment>
+      {/*
+       * Global
+       */}
       <Helmet>
         <body />
       </Helmet>
+
+      {/*
+       * Header
+       */}
       <Header
         id="top"
         siteTitle={title}
         threshold={hasFullHeight ? window.innerHeight * 0.8 : 50}
         hasFullHeight={hasFullHeight}
       />
+
+      {/*
+       * Main
+       */}
       <main>{children}</main>
+
+      {/*
+       * Footer
+       */}
       <footer>
         © {new Date().getFullYear()}, Built with
         {` `}
         <a href="https://www.gatsbyjs.org">Gatsby</a>
       </footer>
+
+      {/*
+       * Scroll-to-top
+       */}
       <ScrollToTop anchor="#top" threshold={400}>
         <Fab color="secondary" size="medium" aria-label="scroll back to top">
           <KeyboardArrowUpIcon />
@@ -49,13 +103,7 @@ const Layout = ({ hasFullHeight, children }) => {
   );
 };
 
-Layout.propTypes = {
-  hasFullHeight: PropTypes.bool,
-  children: PropTypes.node.isRequired
-};
-
-Layout.defaultProps = {
-  hasFullHeight: false
-};
+Layout.propTypes = propTypes;
+Layout.defaultProps = defaultProps;
 
 export default Layout;

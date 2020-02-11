@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { Link } from 'gatsby';
 import PropTypes from 'prop-types';
 import React from 'react';
@@ -17,19 +16,47 @@ import Burger from './ui/burger';
 import useElevationOnScroll from '../hooks/useElevationOnScroll';
 import useToggle from '../hooks/useToggle';
 
+//
+//  Prop types
+//
 const propTypes = {
+  /**
+   *  id
+   *  @type string
+   */
   id: PropTypes.string,
+
+  /**
+   *  siteTitle
+   *  @type string
+   */
   siteTitle: PropTypes.string,
+
+  /**
+   *  threshold
+   *  @type number
+   */
   threshold: PropTypes.number,
+
+  /**
+   *  hasFullHeight
+   *  @type boolean
+   */
   hasFullHeight: PropTypes.bool
 };
 
+//
+//  Default props
+//
 const defaultProps = {
   siteTitle: '',
   threshold: 50,
   hasFullHeight: false
 };
 
+//
+//  Styles
+//
 const useStyles = makeStyles(theme => ({
   appBar: props => ({
     background:
@@ -46,14 +73,34 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const Header = props => {
+  /**
+   *  Destructure props
+   */
   const { id, siteTitle, threshold } = props;
+
+  /**
+   *  Elevation
+   */
   const elevated = useElevationOnScroll(threshold);
+
+  /**
+   *  Classes
+   */
   const classes = useStyles({ elevated, ...props });
+
+  /**
+   *  Sidenav control api
+   */
   const nav = useToggle();
 
+  /**
+   *  Render
+   */
   return (
     <header id={id}>
-      {/* <Toolbar id={id} /> */}
+      {/*
+       * Navbar
+       */}
       <HideOnScroll {...props}>
         <AppBar className={classes.appBar} elevation={elevated ? 4 : 0}>
           <Toolbar>
@@ -63,14 +110,12 @@ const Header = props => {
           </Toolbar>
         </AppBar>
       </HideOnScroll>
-      <Drawer bgcolor="primary.main" anchor="top" open={nav.active}>
-        <Box
-          bgcolor="primary.main"
-          color="background.paper"
-          width="100%"
-          height="100%"
-          textAlign="center"
-        >
+
+      {/*
+       * Side Nav
+       */}
+      <Drawer bgcolor="primary.main" anchor="right" open={nav.active}>
+        <Box width={300}>
           <List>
             <ListItem>
               <Link to="/page-2">Item 1</Link>
@@ -79,6 +124,10 @@ const Header = props => {
           </List>
         </Box>
       </Drawer>
+
+      {/*
+       * Burger
+       */}
       <Burger pos="fxd" active={nav.active} onClick={nav.toggle} />
     </header>
   );

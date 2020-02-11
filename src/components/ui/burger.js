@@ -2,18 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-/**
- *
- *  Component name
- *
- */
+//
+//  Component name
+//
 const compName = 'burger';
 
-/**
- *
- *  Prop types
- *
- */
+//
+//  Prop types
+//
 const propTypes = {
   /**
    *  type
@@ -40,11 +36,9 @@ const propTypes = {
   posAlign: PropTypes.oneOf(['left', 'right'])
 };
 
-/**
- *
- *  Default props
- *
- */
+//
+//  Default props
+//
 const defaultProps = {
   type: 'spin',
   active: false,
@@ -75,11 +69,6 @@ const Burger = ({ type, active, pos, posAlign, onClick }) => {
   );
 };
 
-/**
- *
- *  Assign values
- *
- */
 Burger.propTypes = propTypes;
 Burger.defaultProps = defaultProps;
 

@@ -50,12 +50,7 @@ const IndexPage = () => (
         data-uk-slideshow-item="next"
       ></a>
     </div>
-    <Box
-      component="section"
-      bgcolor="primary.main"
-      color="background.paper"
-      py={8}
-    >
+    <Box component="section" bgcolor="primary.main" py={8}>
       <Container>
         <Typography variant="h3">
           <Box mb={2}>Section title</Box>
