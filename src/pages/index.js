@@ -1,38 +1,33 @@
 import React from 'react';
 import { Link } from 'gatsby';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import { Container, Box, Typography } from '@material-ui/core';
 
 import Layout from '../components/layout';
-import Image from '../components/image';
 import SEO from '../components/seo';
-import PillButton from '../components/ui/PillButton';
+import PillButton from '../components/ui/pill-button';
+import image1 from '../images/photo-1578165219176-ece04edbd053.jpeg';
+import image2 from '../images/photo-1580498137839-a3aa044dd1d4.jpeg';
 
 const IndexPage = () => (
-  <Layout>
+  <Layout hasFullHeight={true}>
     <SEO title="Home" />
     <div
       className="uk-position-relative uk-visible-toggle uk-light"
       tabIndex="-1"
       data-uk-slideshow
-      style={{ opacity: 0 }}
     >
       <ul
         className="uk-slideshow-items"
         data-uk-height-viewport="offset-top: true"
       >
         <li>
-          <img
-            src="https://images.unsplash.com/photo-1580843408741-ceb3d2995e5b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=6000&q=80"
-            alt=""
-            data-uk-cover
-          />
-          <div class="uk-overlay-primary uk-position-cover"></div>
+          <LazyLoadImage src={image1} alt="" data-uk-cover />
+          <div className="uk-overlay-primary uk-position-cover"></div>
         </li>
         <li>
-          <img
-            src="https://images.unsplash.com/photo-1580843408741-ceb3d2995e5b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=6000&q=80"
-            alt=""
-            data-uk-cover
-          />
+          <LazyLoadImage src={image2} alt="" data-uk-cover />
+          <div className="uk-overlay-primary uk-position-cover"></div>
         </li>
         {/* <li>
           <img src="images/dark.jpg" alt="" data-uk-cover />
@@ -55,69 +50,21 @@ const IndexPage = () => (
         data-uk-slideshow-item="next"
       ></a>
     </div>
-    <PillButton variant="contained" color="primary">
-      Primary
-    </PillButton>
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <Link to="/page-2/" className="uk-button uk-button-pill uk-button-primary">
-      Go to page 2
-    </Link>
+    <Box
+      component="section"
+      bgcolor="primary.main"
+      color="background.paper"
+      py={8}
+    >
+      <Container>
+        <Typography variant="h3">
+          <Box mb={2}>Section title</Box>
+        </Typography>
+        <Typography component="p" variant="body2">
+          this is some text
+        </Typography>
+      </Container>
+    </Box>
   </Layout>
 );
 
